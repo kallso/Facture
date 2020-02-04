@@ -8,4 +8,6 @@ public class Ramette extends Article {
         super(ref, marque, prix);
         this.nom += " " + qualite;
     }
+
+    public Ramette() {}
 }

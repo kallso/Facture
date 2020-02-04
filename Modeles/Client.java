@@ -1,16 +1,17 @@
 package Facture.Modeles;
 
-import java.util.UUID;
+import java.io.Serializable;
 
-public class Client {
-    private UUID id;
+public class Client implements Serializable {
+    static private int idCount;
+    private int id;
     private String nom, prenom;
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -31,8 +32,14 @@ public class Client {
     }
 
     public Client(String nom, String prenom) {
-        this.id = UUID.randomUUID();
+        this.id = getNewID();
         this.nom = nom;
         this.prenom = prenom;
+    }
+
+    public Client() {}
+
+    static private int getNewID() {
+        return idCount++;
     }
 }

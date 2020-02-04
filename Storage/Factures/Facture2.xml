@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_221" class="java.beans.XMLDecoder">
+ <object class="Facture.Modeles.Facture">
+  <void property="articles">
+   <object class="java.util.LinkedList" id="LinkedList0">
+    <void method="add">
+     <object class="Facture.Modeles.LigneCommande">
+      <void property="article">
+       <object class="Facture.Modeles.Articles.Stylo">
+        <void property="marque">
+         <string>Watertruc</string>
+        </void>
+        <void property="nom">
+         <string>Stylo Jade</string>
+        </void>
+        <void property="prix">
+         <double>76.0</double>
+        </void>
+        <void property="ref">
+         <string>s1</string>
+        </void>
+       </object>
+      </void>
+      <void property="quantite">
+       <int>10</int>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="Facture.Modeles.LigneCommande">
+      <void property="article">
+       <object class="Facture.Modeles.Articles.Ramette">
+        <void property="marque">
+         <string>Clairefont</string>
+        </void>
+        <void property="nom">
+         <string>Ramette haute qualité</string>
+        </void>
+        <void property="prix">
+         <double>14.0</double>
+        </void>
+        <void property="ref">
+         <string>r1</string>
+        </void>
+       </object>
+      </void>
+      <void property="quantite">
+       <int>15</int>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="Facture.Modeles.LigneCommande">
+      <void property="article">
+       <object class="Facture.Modeles.Articles.Lot">
+        <void property="article">
+         <object class="Facture.Modeles.Articles.Stylo">
+          <void property="marque">
+           <string>Marker</string>
+          </void>
+          <void property="nom">
+           <string>Stylo</string>
+          </void>
+          <void property="prix">
+           <double>137.2</double>
+          </void>
+          <void property="ref">
+           <string>s2</string>
+          </void>
+         </object>
+        </void>
+        <void property="marque">
+         <string>Marker</string>
+        </void>
+        <void property="nom">
+         <string>Lot de 5 Stylo</string>
+        </void>
+        <void property="prix">
+         <double>686.0</double>
+        </void>
+        <void property="quantite">
+         <int>5</int>
+        </void>
+        <void property="ref">
+         <string>l1</string>
+        </void>
+       </object>
+      </void>
+      <void property="quantite">
+       <int>2</int>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="Facture.Modeles.LigneCommande">
+      <void property="article">
+       <object class="Facture.Modeles.Article">
+        <void property="marque">
+         <string>FourNiTure</string>
+        </void>
+        <void property="nom">
+         <string>Equerre</string>
+        </void>
+        <void property="prix">
+         <double>26.0</double>
+        </void>
+        <void property="ref">
+         <string>e1</string>
+        </void>
+       </object>
+      </void>
+      <void property="quantite">
+       <int>6</int>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void property="client">
+   <object class="Facture.Modeles.Client" id="Client0">
+    <void property="nom">
+     <string>Toto</string>
+    </void>
+    <void property="prenom">
+     <string>Titi</string>
+    </void>
+   </object>
+  </void>
+  <void property="commande">
+   <object class="Facture.Modeles.Commande">
+    <void property="articles">
+     <object idref="LinkedList0"/>
+    </void>
+    <void property="client">
+     <object idref="Client0"/>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1580839138754</long>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void property="date">
+   <object class="java.util.Date">
+    <long>1580839138754</long>
+   </object>
+  </void>
+  <void property="numero">
+   <int>12345</int>
+  </void>
+ </object>
+</java>

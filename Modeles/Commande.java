@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
 
-public class Facture implements Serializable {
-    private int numero, prixTotal;
+public class Commande implements Serializable {
+    static private int idCount;
+    private int id;
     private Client client;
     private Date date;
     private LinkedList<LigneCommande> articles;
-    private Commande commande;
 
-    public void setPrixTotal(int prixTotal) {
-        this.prixTotal = prixTotal;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setClient(Client client) {
@@ -27,31 +27,12 @@ public class Facture implements Serializable {
         this.articles = articles;
     }
 
-    public void setCommande(Commande commande) {
-        this.commande = commande;
+    public int getId() {
+        return id;
     }
 
-    public Commande getCommande() {
-        return commande;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-    public double getPrixTotal() {
-        for(LigneCommande ligneCommande : articles) {
-            prixTotal += ligneCommande.getPrixTotal();
-        }
-        return prixTotal;
-    }
-
-    public String getNomClient() {
-        return client.getNom();
+    public Client getClient() {
+        return client;
     }
 
     public Date getDate() {
@@ -62,19 +43,25 @@ public class Facture implements Serializable {
         return articles;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
-    public Facture(int numero, Commande commande) {
-        this.numero = numero;
+    public Commande(Client client, LinkedList<LigneCommande> articles) {
+        this.client = client;
+        this.articles = articles;
         this.date = new Date();
-        this.commande = commande;
-        this.client = commande.getClient();
-        this.articles = commande.getArticles();
+        this.id = getNewID();
     }
 
-    public Facture() {}
+    public Commande(Client client) {
+        this.client = client;
+        this.articles = new LinkedList();
+        this.date = new Date();
+        this.id = getNewID();
+    }
+
+    public Commande() {}
+
+    static private int getNewID() {
+        return idCount++;
+    }
 
     public boolean lineExist(LigneCommande ligne) {
         boolean lineExist = false;
@@ -93,22 +80,6 @@ public class Facture implements Serializable {
             lineExist = true;
         }
         return lineExist;
-    }
-
-    public void afficherFacture() {
-        String repeated = new String(new char[80]).replace('\0', '-');
-        System.out.println(repeated);
-        System.out.printf("Facture %d       Client: %s       Date: %s %n",
-                this.getNumero(), this.getNomClient(), this.getDate());
-        System.out.printf("%7s  %6s  %23s  %14s  %10s  %10s %n",
-                "Quant.", "Réf.", "Nom", "Marque", "PU", "PT");
-        for(LigneCommande ligne : articles) {
-            System.out.printf("%7d  %6s  %23.20s  %14.20s  %10.2f  %10.2f %n",
-                    ligne.getQuantite(), ligne.getArticle().getRef(),
-                    ligne.getArticle().getNom(),
-                    ligne.getArticle().getMarque(), ligne.getArticle().getPrix(), ligne.getPrixTotal());
-        }
-        System.out.printf("%48s Prix total facture : %10.2f %n%n", "", this.getPrixTotal());
     }
 
     public boolean addLigne(int quantite, Article article) {
